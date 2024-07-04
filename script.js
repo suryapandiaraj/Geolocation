@@ -1,45 +1,55 @@
-document.getElementById('fetch-btn').addEventListener('click', () => {
+document.getElementById("fetch-btn").addEventListener("click", () => {
   navigator.geolocation.getCurrentPosition(
-    position => {
+    (position) => {
       const { latitude, longitude } = position.coords;
       showMap(latitude, longitude);
       fetchWeatherData(latitude, longitude);
     },
-    error => {
-      console.error('Error fetching location:', error);
-      alert('Unable to fetch your location.');
+    (error) => {
+      console.error("Error fetching location:", error);
+      alert("Unable to fetch your location.");
     }
   );
 });
 
 function showMap(lat, lon) {
-  const map = new google.maps.Map(document.getElementById('map'), {
+  const map = new google.maps.Map(document.getElementById("map"), {
     center: { lat, lng: lon },
-    zoom: 10
+    zoom: 10,
   });
 
   new google.maps.Marker({
     position: { lat, lng: lon },
-    map: map
+    map: map,
   });
 }
 
 function fetchWeatherData(lat, lon) {
-  const apiKey = 'YOUR_OPENWEATHERMAP_API_KEY';
-  const url = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+  const data = {
+    latitude: lat,
+    longitude: lon,
+  };
 
-  fetch(url)
-    .then(response => response.json())
-    .then(data => {
+  const options = {
+    method: "GET",
+    mode: "no-cors",
+    body: JSON.stringify(data),
+  };
+
+  const url = "https://openweathermap.org/api/one-call-3";
+
+  fetch(url, options)
+    .then((response) => response.json())
+    .then((data) => {
       displayWeatherData(data);
     })
-    .catch(error => {
-      console.error('Error fetching weather data:', error);
+    .catch((error) => {
+      console.error("Error fetching weather data:", error);
     });
 }
 
 function displayWeatherData(data) {
-  const weatherDetails = document.getElementById('weather-details');
+  const weatherDetails = document.getElementById("weather-details");
   const { temp } = data.current;
   const { description } = data.current.weather[0];
   const humidity = data.current.humidity;

@@ -1,0 +1,36 @@
+Project Overview
+You're assigned the task of creating a dynamic weather application that fetches current weather data for a user's location. The application will obtain the user's geolocation, display it on Google Maps, and then retrieve and display the relevant weather details from the OpenWeatherMap API.
+
+Functional Requirements
+Geolocation API: On the landing screen, the user should only see a "Fetch Data" button. Once clicked, the application should use the Geolocation API to fetch the latitude and longitude of the user's current device.
+Displaying the Map: Using the acquired latitude and longitude, show the user's location on Google Maps.
+Fetching Weather Data: Use the `One Call API` from OpenWeatherMap to fetch the current weather data for the given coordinates- (https://openweathermap.org/api/one-call-3)
+UI/UX: The UI of the application should be designed according to the provided Figma link.
+
+Features
+Fetch Geolocation: Use the Geolocation API to fetch the user's current latitude and longitude.
+Map Integration: Display the user's current location on Google Maps.
+Fetch Weather Data: Send a GET request to the OpenWeatherMap API using the retrieved latitude and longitude to fetch the relevant weather details.
+Display Weather Data: Create a section to dynamically display the weather data, ensuring all relevant details provided in the API response are handled and shown.
+
+Important Links
+Figma Link - https://www.figma.com/file/UOp1Sb5LIXcWfwy0U0PFmN/Untitled?type=design&node-id=0-1&mode=design&t=viFkLndbaLDTAg6V-0
+
+How to put lat,long on map - https://stackoverflow.com/questions/33464192/display-an-embedded-google-map-iframe-with-a-marker-on-a-certain-latitude-and-lo
+
+Marking Scheme
+Geolocation Fetching - 20 Points
+Properly fetch the user's current latitude and longitude using the Geolocation API (10 Points)
+Handle potential errors, like if a user denies location access (10 Points)
+
+Map Integration - 25 Points
+Properly show the user's location on Google Maps using the provided latitude and longitude (15 Points)
+Ensure the map loads correctly and is interactive (10 Points)
+
+Weather Data Fetching - 30 Points
+Send a GET request to the OpenWeatherMap API and fetch the weather details for the provided coordinates (20 Points)
+Correctly handle potential API errors or no data scenarios (10 Points)
+
+UI/UX Implementation - 25 Points
+Implement the UI as per the design provided in the Figma link, ensuring that the visual representation matches closely (15 Points)
+Ensure that the user experience is smooth, with proper loading indications and error messages if necessary (10 Points)
